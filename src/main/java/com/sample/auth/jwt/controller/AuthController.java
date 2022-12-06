@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample.controller;
+package com.sample.auth.jwt.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sample.auth.jwt.json.web.token.sample.dto.LoginDTO;
-import com.sample.auth.jwt.json.web.token.sample.dto.LoginResponseDTO;
-import com.sample.auth.jwt.json.web.token.sample.util.TokenManager;
+import com.sample.auth.jwt.dto.LoginDTO;
+import com.sample.auth.jwt.dto.LoginResponseDTO;
+import com.sample.auth.jwt.util.TokenManager;
 
 
 @RestController

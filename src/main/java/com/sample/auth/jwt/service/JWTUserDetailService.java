@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample.service;
+package com.sample.auth.jwt.service;
 
 import java.util.ArrayList;
 

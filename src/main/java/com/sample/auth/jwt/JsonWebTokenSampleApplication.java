@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample;
+package com.sample.auth.jwt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

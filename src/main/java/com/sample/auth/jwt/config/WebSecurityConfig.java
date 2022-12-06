@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample.config;
+package com.sample.auth.jwt.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

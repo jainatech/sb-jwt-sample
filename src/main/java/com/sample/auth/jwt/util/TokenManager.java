@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample.util;
+package com.sample.auth.jwt.util;
 
 import java.io.Serializable;
 import java.util.Date;

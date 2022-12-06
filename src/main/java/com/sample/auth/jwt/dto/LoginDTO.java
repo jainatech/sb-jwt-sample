@@ -1,4 +1,4 @@
-package com.sample.auth.jwt.json.web.token.sample.dto;
+package com.sample.auth.jwt.dto;
 
 public class LoginDTO {
 	
