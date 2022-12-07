@@ -5,12 +5,16 @@ import java.util.ArrayList;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,14 +22,15 @@ import com.sample.auth.jwt.dto.LoginDTO;
 import com.sample.auth.jwt.dto.LoginResponseDTO;
 import com.sample.auth.jwt.util.TokenManager;
 
-
 @RestController
 @RequestMapping("api/v1/")
+@PropertySource("classpath:application.properties")
 public class AuthController {
 	
 	@Autowired
 	private TokenManager tokenManager;
-
+	
+	
 	@PostMapping("login")
 	public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginDTO loginDto) throws ParseException {	
 		
@@ -42,6 +47,22 @@ public class AuthController {
 		final String jwtToken = tokenManager.generateJwtToken(userDetails);
 		
 	    return new ResponseEntity<LoginResponseDTO>(new LoginResponseDTO(jwtToken), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("privateapi")
+	public ResponseEntity<String> privateapi(@RequestHeader(value="authorization") String token) {
+		
+		try {
+			if(!tokenManager.validateJwtToken(token)) {
+				return new ResponseEntity<String>("Not a valid token", HttpStatus.UNAUTHORIZED);
+			}		
+		}catch(Exception e) {
+			return new ResponseEntity<String>("Invalid Token", HttpStatus.UNAUTHORIZED);
+		}
+		
+	    return new ResponseEntity<String>("Executed Private API", HttpStatus.OK);
+		
 	}
 	
 	
