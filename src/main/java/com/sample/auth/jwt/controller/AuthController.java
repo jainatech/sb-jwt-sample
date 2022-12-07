@@ -36,9 +36,17 @@ public class AuthController {
 		
 		LoginResponseDTO jwtResponseModel = null;
 		
+		/**
+		 * Below if condition is static. For making this production ready same validation should happen 
+		 * from Database side
+		 */
+		
+		
 		if(!loginDto.getUsername().equals("admin") || !loginDto.getPassword().equals("pass") ) {
 		    return new ResponseEntity<LoginResponseDTO>(jwtResponseModel, HttpStatus.UNAUTHORIZED);
 		}
+		
+		/*****************/
 		
 		final UserDetails userDetails = 
 				new User(loginDto.getUsername(),
